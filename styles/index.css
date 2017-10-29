@@ -1,0 +1,7 @@
+/* Add some normalization … */
+@import "normalize.css";
+
+/* Your styles here … */
+h1 {
+  font-weight: normal;
+}

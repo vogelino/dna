@@ -1,0 +1,22 @@
+{
+  "private": true,
+  "scripts": {
+    "start": "gulp",
+    "build": "gulp build"
+  },
+  "devDependencies": {
+    "cssnano": "^4.0.0-rc.2",
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-connect": "^5.0.0",
+    "postcss-cssnext": "^3.0.2",
+    "postcss-import": "^11.0.0",
+    "gulp-postcss": "^7.0.0",
+    "gulp-sourcemaps": "^2.6.1",
+    "rollup": "^0.50.0",
+    "rollup-plugin-uglify": "^2.0.1"
+  },
+  "dependencies": {
+    "normalize.css": "^7.0.0"
+  }
+}
