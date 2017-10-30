@@ -8,19 +8,10 @@ const entryScriptPath = './scripts/index.js';
 // Preprocess script files
 gulp.task('scripts', ['clean:scripts'], async () => {
   const rollup = require('rollup');
+  const config = require('./rollup.config');
 
-  const bundle = await rollup.rollup({
-    input: entryScriptPath,
-    plugins: [
-      require('rollup-plugin-uglify')(),
-    ]
-  });
-
-  await bundle.write({
-    file: './dist/scripts/index.js',
-    format: 'iife',
-    sourcemap: true,
-  });
+  const bundle = await rollup.rollup(config);
+  await bundle.write(config.output);
 
   gulp.src(scriptsPath)
     .pipe(connect.reload());
@@ -35,11 +26,7 @@ gulp.task('styles', ['clean:styles'], async () => {
 
   return gulp.src(stylesPath)
     .pipe(sourcemaps.init())
-    .pipe(postcss([
-      require('postcss-cssnext'),
-      require('postcss-import'),
-      require('cssnano')({ autoprefixer: false }),
-    ]))
+    .pipe(postcss())
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('./dist/styles'))
     .pipe(connect.reload());
