@@ -17,16 +17,27 @@ gulp.task('scripts', ['clean:scripts'], async () => {
     .pipe(connect.reload());
 });
 
-const stylesPath = './styles/**/*.css';
+const stylesPath = './styles/**/*.scss';
 
 // Preprocess style files
 gulp.task('styles', ['clean:styles'], async () => {
-  const postcss = require('gulp-postcss');
   const sourcemaps = require('gulp-sourcemaps');
+  const sass = require('gulp-sass');
+  const postcss = require('gulp-postcss');
+  const fontVariantPlugin = require('postcss-font-variant');
+  const importPlugin = require('postcss-import');
+  const cssnanoPlugin = require('cssnano');
+  const autoprefixerPlugin = require('autoprefixer');
 
   return gulp.src(stylesPath)
     .pipe(sourcemaps.init())
-    .pipe(postcss())
+    .pipe(sass().on('error', sass.logError))
+    .pipe(postcss([
+      importPlugin(),
+      cssnanoPlugin(),
+      fontVariantPlugin(),
+      autoprefixerPlugin(),
+    ]))
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('./dist/styles'))
     .pipe(connect.reload());

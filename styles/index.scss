@@ -1,7 +1,11 @@
 /* Import dependency (from node_modules) … */
 @import "normalize.css";
 
+$border-width: 4px;
+
 /* Your styles here … */
 h1 {
+  border: $border-width solid red;
   font-weight: normal;
+  display: flex;
 }
