@@ -1,3 +1,5 @@
+@import 'dna-animation';
+
 html,
 body {
 	overflow-x: hidden;
@@ -69,6 +71,7 @@ text {
 	stroke-width: 2;
 	stroke: black;
 	transition: fill 300ms ease-out, stroke-width 300ms ease-out, stroke 300ms ease-out;
+	mix-blend-mode: difference;
 }
 
 .dna-word.active,
@@ -99,6 +102,10 @@ text {
 	margin: 0;
 	font-family: 'Barlow', sans-serif;
 	font-size: 26px;
+}
+
+.song-info {
+	left: 64px;
 }
 
 .scroll-progress {
