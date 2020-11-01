@@ -8,7 +8,7 @@
 		"build": "parcel build index.html --no-minify --out-dir ./public/"
 	},
 	"engines": {
-		"node": "12.14.1"
+		"node": "12.x"
 	},
 	"devDependencies": {
 		"babel-core": "^6.26.3",
